@@ -1,1 +1,32 @@
-<p>task-details works!</p>
+<div class="task-detail-container" *ngIf="task; else notFound">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ task.title }}</mat-card-title>
+      <mat-card-subtitle>
+        Status: {{ task.status }} | Priority: {{ task.priority }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p><strong>Description:</strong></p>
+      <p>{{ task.description }}</p>
+      
+      <div class="task-info">
+        <p><strong>Assignee:</strong> {{ task.assignee }}</p>
+        <p><strong>Created:</strong> {{ task.createdAt | date:'full' }}</p>
+        <p *ngIf="task.dueDate"><strong>Due Date:</strong> {{ task.dueDate | date:'full' }}</p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button routerLink="/board">BACK TO BOARD</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <h2>Task not found</h2>
+    <button mat-button routerLink="/board">BACK TO BOARD</button>
+  </div>
+</ng-template>
