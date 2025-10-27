@@ -1,0 +1,72 @@
+.task-card {
+  cursor: grab;
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+
+  &.priority-high {
+    border-left: 4px solid #f44336;
+  }
+  
+  &.priority-medium {
+    border-left: 4px solid #ff9800;
+  }
+  
+  &.priority-low {
+    border-left: 4px solid #4caf50;
+  }
+}
+
+.task-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.priority-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  
+  &.priority-high {
+    background: #f44336;
+    color: white;
+  }
+  
+  &.priority-medium {
+    background: #ff9800;
+    color: white;
+  }
+  
+  &.priority-low {
+    background: #4caf50;
+    color: white;
+  }
+}
+
+.task-description {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.task-meta {
+  font-size: 0.9rem;
+  color: #777;
+  
+  div {
+    margin-bottom: 0.25rem;
+  }
+}
+
+mat-card-actions {
+  padding: 0.5rem !important;
+  
+  button {
+    margin: 0 0.25rem !important;
+  }
+}

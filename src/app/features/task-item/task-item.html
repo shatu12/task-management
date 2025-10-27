@@ -1,1 +1,30 @@
-<p>task-item works!</p>
+<mat-card class="task-card" [class]="priorityClass">
+  <mat-card-header>
+    <mat-card-title class="task-title">{{ task.title }}</mat-card-title>
+    <span class="priority-badge" [class]="priorityClass">
+      {{ task.priority }}
+    </span>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p class="task-description">{{ task.description }}</p>
+    
+    <div class="task-meta">
+      <div class="assignee">
+        <strong>Assignee:</strong> {{ task.assignee }}
+      </div>
+      <div class="due-date" *ngIf="task.dueDate">
+        <strong>Due:</strong> {{ task.dueDate | date:'mediumDate' }}
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-button color="primary" [routerLink]="['/tasks', task.id]">
+      VIEW
+    </button>
+    <button mat-button color="warn" (click)="onDelete()">
+      DELETE
+    </button>
+  </mat-card-actions>
+</mat-card>
