@@ -1,0 +1,43 @@
+.board {
+  width: 100%;
+}
+
+.columns-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+}
+
+.column-card {
+  height: 100%;
+  min-height: 600px;
+  
+  mat-card-header {
+    border-bottom: 2px solid;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    
+    // Different colors for each column
+    &:has(+ mat-card-content app-task-list[status="todo"]) {
+      border-color: #f44336;
+    }
+    &:has(+ mat-card-content app-task-list[status="in-progress"]) {
+      border-color: #ff9800;
+    }
+    &:has(+ mat-card-content app-task-list[status="done"]) {
+      border-color: #4caf50;
+    }
+  }
+}
+
+.task-count {
+  color: #666;
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
