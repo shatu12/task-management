@@ -14,14 +14,14 @@ export class TaskList {
   @Input() tasks: Task[] = [];
   @Input() status!: TaskStatus;
   
-  @Output() taskStatusChange = new EventEmitter<{ taskId: string; newStatus: TaskStatus }>();
-  @Output() taskDelete = new EventEmitter<string>();
+  @Output() taskStatusChange = new EventEmitter<{ taskId: number; newStatus: TaskStatus }>();
+  @Output() taskDelete = new EventEmitter<number>();
 
-  onStatusChange(taskId: string, newStatus: TaskStatus): void {
+  onStatusChange(taskId: number, newStatus: TaskStatus): void {
     this.taskStatusChange.emit({ taskId, newStatus });
   }
 
-  onDelete(taskId: string): void {
+  onDelete(taskId: number): void {
     this.taskDelete.emit(taskId);
   }
 }

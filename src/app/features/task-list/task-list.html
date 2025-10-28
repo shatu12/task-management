@@ -1,12 +1,15 @@
 <div class="task-list" [class]="status">
-  <div *ngIf="tasks.length === 0" class="empty-state">
+  @if (tasks.length === 0) {
+    <div class="empty-state">
     <p>No tasks in this column</p>
   </div>
+  }
   
-  <app-task-item 
-    *ngFor="let task of tasks"
-    [task]="task"
-    (statusChange)="onStatusChange(task.id.toString(), $event)"
-    (delete)="onDelete(task.id.toString())">
-  </app-task-item>
+  @for (task of tasks; track task.id) {
+    <app-task-item 
+      [task]="task"
+      (statusChange)="onStatusChange(task.id, $event)"
+      (delete)="onDelete(task.id)">
+    </app-task-item>
+  }
 </div>
