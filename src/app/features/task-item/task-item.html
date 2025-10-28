@@ -13,9 +13,12 @@
       <div class="assignee">
         <strong>Assignee:</strong> {{ task.assignee }}
       </div>
-      <div class="due-date" *ngIf="task.dueDate">
+      @if (task.dueDate) {
+        <div class="due-date">
         <strong>Due:</strong> {{ task.dueDate | date:'mediumDate' }}
       </div>
+      }
+      
     </div>
   </mat-card-content>
 

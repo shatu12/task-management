@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { Task } from '../../core/models/task/task';
 import { TaskStatus } from '../../core/enums/task-status';
+import { TaskPriority } from '../../core/enums/task-priority';
 
 @Component({
   selector: 'app-task-item',
@@ -20,7 +21,16 @@ export class TaskItem {
   @Output() delete = new EventEmitter<void>();
 
   get priorityClass(): string {
-    return `priority-${this.task.priority}`;
+    switch (this.task.priority) {
+      case TaskPriority.High:
+        return 'priority-high';
+      case TaskPriority.Medium:
+        return 'priority-medium';
+      case TaskPriority.Low:
+        return 'priority-low';
+      default:
+        return 'priority-low';
+    }
   }
 
   onStatusChange(newStatus: TaskStatus): void {
