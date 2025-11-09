@@ -1,15 +1,14 @@
 <div class="task-list" [class]="status">
   @if (tasks.length === 0) {
-    <div class="empty-state">
+  <div class="empty-state">
     <p>No tasks in this column</p>
   </div>
   }
-  
+
   @for (task of tasks; track task.id) {
-    <app-task-item 
-      [task]="task"
-      (statusChange)="onStatusChange(task.id, $event)"
-      (delete)="onDelete(task.id)">
+  <div cdkDrag [cdkDragData]="task" class="task-drag-item">
+    <app-task-item [task]="task" (statusChange)="onStatusChange(task.id, $event)" (delete)="onDelete(task.id)">
     </app-task-item>
+  </div>
   }
 </div>

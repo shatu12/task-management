@@ -13,6 +13,38 @@
   border-radius: 8px;
   
   p {
-    margin: 0;
+    margin: 0 0 0.5rem 0;
   }
+  
+  small {
+    font-style: italic;
+  }
+}
+
+// Drag and drop styles
+.task-drag-item {
+  // Drag preview styling
+  &.cdk-drag-preview {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transform: rotate(3deg);
+  }
+  
+  // Placeholder while dragging
+  &.cdk-drag-placeholder {
+    opacity: 0.3;
+    background: #ccc;
+    border-radius: 8px;
+    min-height: 80px;
+  }
+  
+  // Animation when moving
+  &.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+// Drop list animation
+.task-list.cdk-drop-list-dragging .task-drag-item:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
